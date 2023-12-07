@@ -14,14 +14,14 @@ else:
 ext_modules = [
     Extension(
         name="whispercpp",
-        sources=["whispercpp.pyx", "whisper.cpp/whisper.cpp"],
+        sources=["whispercpp.pyx", "/data/wuheyi/whisper.cpp/whisper.cpp"],
         language="c++",
         extra_compile_args=["-std=c++11"],
    )
 ]
 ext_modules = cythonize(ext_modules)
 
-whisper_clib = ('whisper_clib', {'sources': ['whisper.cpp/ggml.c']})
+whisper_clib = ('whisper_clib', {'sources': ['/data/wuheyi/whisper.cpp/ggml.c']})
 
 setup(
     name='whispercpp',
@@ -31,7 +31,7 @@ setup(
     author_email='luke@devthe.com',
     libraries=[whisper_clib],
     ext_modules = cythonize("whispercpp.pyx"),
-    include_dirs = ['./whisper.cpp/', numpy.get_include()],
+    include_dirs = ['/data/wuheyi/whisper.cpp/', numpy.get_include()],
     install_requires=[
       'numpy',
       'ffmpeg-python',
